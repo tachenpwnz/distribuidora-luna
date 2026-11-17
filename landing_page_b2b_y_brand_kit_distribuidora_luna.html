@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Distribuidora LUNA | Aceites y Lubricantes para Motos y Autos — Córdoba Capital</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Barlow Condensed (Racing Bold) & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;1,800;1,900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Phosphor Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Barlow Condensed', 'sans-serif'],
+          },
+          colors: {
+            luna: {
+              navy: '#0E1530',
+              cobalt: '#162048',
+              slate: '#273268',
+              checkered: '#5B66A6',
+              crimson: '#DC1E35',
+              crimsonDark: '#B91529',
+              gold: '#F7C216',
+              amber: '#FF9E00',
+              ice: '#F4F6FB',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Motivo sutil de bandera a cuadros racing inspirado en la identidad visual */
+    .racing-checkered-bg {
+      background-color: #0E1530;
+      background-image:
+        linear-gradient(45deg, rgba(91, 102, 166, 0.08) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(91, 102, 166, 0.08) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(91, 102, 166, 0.08) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(91, 102, 166, 0.08) 75%);
+      background-size: 36px 36px;
+      background-position: 0 0, 0 18px, 18px -18px, -18px 0;
+    }
+    .logo-glow {
+      filter: drop-shadow(0 0 12px rgba(220, 30, 53, 0.35));
+    }
+  </style>
+</head>
+<body class="bg-luna-ice text-luna-navy font-sans antialiased selection:bg-luna-gold selection:text-luna-navy">
+
+  <!-- Notificación flotante (Toast sin alert) -->
+  <div id="toast" class="fixed bottom-5 right-5 z-50 hidden transform transition-all duration-300 translate-y-4 opacity-0">
+    <div class="bg-luna-navy text-white px-4 py-3 rounded-xl shadow-2xl border border-luna-gold/60 flex items-center gap-3 text-sm font-medium">
+      <i class="ph-fill ph-check-circle text-luna-gold text-xl"></i>
+      <span id="toast-msg">Acción completada</span>
+    </div>
+  </div>
+
+  <!-- ==================== NAVBAR STICKY ==================== -->
+  <header class="sticky top-0 z-40 bg-luna-navy/95 backdrop-blur-md border-b border-luna-slate text-white shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <!-- Logo Oficial Distribuidora LUNA (Versión Oscura) -->
+        <a href="#inicio" onclick="switchView('landing')" class="flex items-center group" aria-label="Distribuidora LUNA Inicio">
+          <svg class="h-12 sm:h-14 w-auto logo-glow transition-transform duration-200 group-hover:scale-[1.02]" viewBox="0 0 430 125" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="navMoonGrad" x1="15" y1="15" x2="95" y2="105" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#2B59C3"/>
+                <stop offset="45%" stop-color="#162048"/>
+                <stop offset="100%" stop-color="#090E24"/>
+              </linearGradient>
+              <radialGradient id="navDropGrad" cx="42%" cy="35%" r="60%">
+                <stop offset="0%" stop-color="#FFF3A1"/>
+                <stop offset="35%" stop-color="#F7C216"/>
+                <stop offset="80%" stop-color="#FF9E00"/>
+                <stop offset="100%" stop-color="#C96A00"/>
+              </radialGradient>
+              <linearGradient id="navSwooshGrad" x1="10" y1="75" x2="125" y2="95" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#DC1E35"/>
+                <stop offset="50%" stop-color="#FF9E00"/>
+                <stop offset="100%" stop-color="#F7C216"/>
+              </linearGradient>
+              <linearGradient id="navGoldLine" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#DC1E35"/>
+                <stop offset="50%" stop-color="#F7C216"/>
+                <stop offset="100%" stop-color="#FF9E00"/>
+              </linearGradient>
+            </defs>
+            <!-- Media Luna Azul Marino Brillante -->
+            <path d="M84 16C52.5 16 27 40.5 27 70.8C27 96.4 45.2 117.8 69.8 123.5C50.6 115.6 37.5 96.8 37.5 74.8C37.5 45.8 61.1 22.3 90.2 22.3C93.8 22.3 97.3 22.7 100.7 23.4C95.6 18.8 90 16 84 16Z" fill="url(#navMoonGrad)" stroke="#5B66A6" stroke-width="1.2"/>
+            <!-- Reflejo superior luna -->
+            <path d="M40 44C47 30 61 20 78 18.5C63 23 50 33 43 47L40 44Z" fill="#7CC6FE" opacity="0.65"/>
+            <!-- Gota Dorada 3D -->
+            <path d="M86 38C86 38 66 61.5 66 75.5C66 86.5 74.9 95.5 86 95.5C97.1 95.5 106 86.5 106 75.5C106 61.5 86 38 86 38Z" fill="url(#navDropGrad)" stroke="#FFF2A6" stroke-width="1"/>
+            <!-- Brillo especular gota -->
+            <ellipse cx="78" cy="70" rx="3.2" ry="9" transform="rotate(-18 78 70)" fill="#FFFFFF" opacity="0.75"/>
+            <!-- Estela curva inferior -->
+            <path d="M26 56C10 73 14 96 42 103C68 109.5 101 94 123 76C101 89 69 98 46 92C23 86 19 69 26 56Z" fill="url(#navSwooshGrad)"/>
+            <!-- Barras laterales y texto DISTRIBUIDORA -->
+            <polygon points="132,27 166,27 163,32 129,32" fill="url(#navGoldLine)"/>
+            <text x="172" y="34" fill="#FFFFFF" font-family="Barlow Condensed, Arial, sans-serif" font-style="italic" font-weight="800" font-size="18" letter-spacing="3.5">DISTRIBUIDORA</text>
+            <polygon points="356,27 390,27 387,32 353,32" fill="url(#navGoldLine)"/>
+            <!-- Wordmark LUNA con contorno carmesí/azul -->
+            <text x="132" y="88" fill="#FFFFFF" stroke="#DC1E35" stroke-width="2.5" paint-order="stroke" font-family="Barlow Condensed, Arial, sans-serif" font-style="italic" font-weight="900" font-size="64" letter-spacing="2">LUNA</text>
+            <!-- Swoosh curvo inferior -->
+            <path d="M126 98C205 88 310 89 406 99C312 94 205 94 126 98Z" fill="url(#navGoldLine)"/>
+            <!-- Subtítulo -->
+            <text x="142" y="115" fill="#F7C216" font-family="Barlow Condensed, Arial, sans-serif" font-style="italic" font-weight="800" font-size="16" letter-spacing="3.2">ACEITES Y LUBRICANTES</text>
+          </svg>
+        </a>
+
+        <!-- Links Desktop -->
+        <nav class="hidden lg:flex items-center gap-6 text-sm font-semibold">
+          <a href="#catalogo" onclick="switchView('landing')" class="text-slate-200 hover:text-luna-gold transition">Catálogo & Ofertas</a>
+          <a href="#beneficios" onclick="switchView('landing')" class="text-slate-200 hover:text-luna-gold transition">Descuentos x Caja</a>
+          <a href="#logistica" onclick="switchView('landing')" class="text-slate-200 hover:text-luna-gold transition">Entregas 48 hs</a>
+          <button onclick="switchView('brandkit')" id="nav-brandkit-btn" class="px-3.5 py-1.5 rounded-lg bg-luna-cobalt hover:bg-luna-slate text-luna-gold border border-luna-gold/40 font-bold transition flex items-center gap-1.5">
+            <i class="ph-bold ph-palette"></i> /brandkit
+          </button>
+        </nav>
+
+        <!-- Acciones Derecha -->
+        <div class="flex items-center gap-2.5">
+          <button onclick="toggleCartDrawer()" class="relative p-2.5 rounded-xl bg-luna-cobalt hover:bg-luna-slate text-white border border-luna-slate transition" aria-label="Ver pedido">
+            <i class="ph-bold ph-shopping-cart text-xl text-luna-gold"></i>
+            <span id="cart-badge" class="hidden absolute -top-1.5 -right-1.5 bg-luna-crimson text-white text-xs font-extrabold w-5 h-5 rounded-full flex items-center justify-center shadow">0</span>
+          </button>
+          <a href="https://wa.me/5493515141141?text=Hola%20Matias!%20Tengo%20un%20comercio%20en%20C%C3%B3rdoba%20y%20quiero%20consultar%20por%20la%20lista%20mayorista%20de%20lubricantes%20(Noviembre%202026)." target="_blank" rel="noopener" class="hidden sm:inline-flex items-center gap-2 bg-luna-crimson hover:bg-luna-crimsonDark text-white font-bold text-sm px-4 py-2.5 rounded-xl shadow-lg shadow-red-950/50 transition">
+            <i class="ph-fill ph-whatsapp-logo text-lg"></i>
+            <span>351 514-1141</span>
+          </a>
+          <button onclick="toggleMobileMenu()" class="lg:hidden p-2.5 rounded-xl bg-luna-cobalt text-white border border-luna-slate">
+            <i class="ph-bold ph-list text-xl"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Menú Móvil -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-luna-cobalt border-t border-luna-slate px-4 py-4 space-y-2.5">
+      <a href="#catalogo" onclick="switchView('landing'); toggleMobileMenu()" class="block py-2 text-white font-semibold">Catálogo & Precios Noviembre 2026</a>
+      <a href="#beneficios" onclick="switchView('landing'); toggleMobileMenu()" class="block py-2 text-white font-semibold">Promos y Regalos por Volumen</a>
+      <a href="#logistica" onclick="switchView('landing'); toggleMobileMenu()" class="block py-2 text-white font-semibold">Condiciones de Entrega (48 hs)</a>
+      <button onclick="switchView('brandkit'); toggleMobileMenu()" class="w-full text-left py-2.5 px-3 rounded-xl bg-luna-navy text-luna-gold font-bold flex items-center gap-2 border border-luna-gold/30">
+        <i class="ph-bold ph-palette"></i> Abrir /brandkit (Logos y Paleta)
+      </button>
+      <a href="https://wa.me/5493515141141?text=Hola%20Matias!%20Quiero%20pedir%20la%20lista%20mayorista%20de%20motos%20en%20C%C3%B3rdoba." target="_blank" rel="noopener" class="w-full flex items-center justify-center gap-2 bg-luna-crimson text-white font-bold py-3 rounded-xl">
+        <i class="ph-fill ph-whatsapp-logo text-xl"></i> WhatsApp Matias (3515141141)
+      </a>
+    </div>
+  </header>
+
+  <!-- ==================== VISTA 1: LANDING PAGE B2B ==================== -->
+  <main id="view-landing">
+    <!-- 1. HERO SECTION (Estilo Motorsport + Navy + Crimson + Gold) -->
+    <section id="inicio" class="racing-checkered-bg text-white relative overflow-hidden border-b-4 border-luna-crimson">
+      <div class="absolute -top-24 -right-24 w-96 h-96 bg-luna-crimson/20 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute bottom-0 left-1/4 w-80 h-80 bg-luna-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-18 lg:py-22">
+        <div class="grid lg:grid-cols-12 gap-10 items-center">
+          <!-- Columna Izquierda -->
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-luna-crimson text-white text-xs sm:text-sm font-bold uppercase tracking-wider shadow-md">
+              <i class="ph-fill ph-fire"></i>
+              <span>Lista Mayorista Motos • Noviembre 2026 • Córdoba Capital</span>
+            </div>
+
+            <h1 class="font-display italic font-black text-4xl sm:text-6xl lg:text-[4rem] leading-[1.03] uppercase tracking-tight">
+              PROVEEDOR MAYORISTA DE <span class="text-luna-gold">LUBRICANTES</span> PARA TU COMERCIO
+            </h1>
+
+            <p class="text-slate-200 text-base sm:text-lg max-w-2xl leading-relaxed">
+              Abastecimiento directo para <strong class="text-white">lubricentros, talleres de motos y casas de repuestos</strong> en Córdoba Capital. Trabajamos las 5 marcas de mayor rotación con descuentos escalonados por caja cerrada y entregas en <strong class="text-luna-gold">48 hs</strong>.
+            </p>
+
+            <!-- Botones CTA -->
+            <div class="flex flex-col sm:flex-row gap-3.5 pt-1">
+              <a href="https://wa.me/5493515141141?text=Hola%20Matias!%20Tengo%20un%20comercio%20en%20C%C3%B3rdoba%20Capital%20y%20quiero%20hacer%20un%20pedido%20mayorista." target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2.5 bg-luna-crimson hover:bg-luna-crimsonDark text-white font-display italic font-extrabold uppercase tracking-wider text-lg px-7 py-4 rounded-xl shadow-xl shadow-red-950/60 transition">
+                <i class="ph-fill ph-whatsapp-logo text-2xl"></i>
+                <span>Hacer Pedido por WhatsApp</span>
+              </a>
+              <a href="#catalogo" class="inline-flex items-center justify-center gap-2 bg-luna-gold hover:bg-luna-amber text-luna-navy font-display italic font-extrabold uppercase tracking-wider text-lg px-7 py-4 rounded-xl shadow-lg transition">
+                <i class="ph-bold ph-list-magnifying-glass text-xl"></i>
+                <span>Ver Precios y Ofertas</span>
+              </a>
+            </div>
+
+            <!-- Acceso rápido por marca -->
+            <div class="pt-4 border-t border-luna-slate">
+              <span class="text-xs uppercase tracking-widest text-luna-gold font-bold block mb-2.5">Filtrar rápido por marca:</span>
+              <div class="flex flex-wrap gap-2">
+                <button onclick="quickFilterBrand('IPONE')" class="px-3.5 py-1.5 rounded-lg bg-luna-cobalt hover:bg-luna-crimson text-white font-display italic font-extrabold text-sm tracking-wider border border-luna-slate transition">IPONE</button>
+                <button onclick="quickFilterBrand('AMA Lubricants')" class="px-3.5 py-1.5 rounded-lg bg-luna-cobalt hover:bg-luna-crimson text-white font-display italic font-extrabold text-sm tracking-wider border border-luna-slate transition">AMA LUBRICANTS</button>
+                <button onclick="quickFilterBrand('WOLVER')" class="px-3.5 py-1.5 rounded-lg bg-luna-cobalt hover:bg-luna-crimson text-white font-display italic font-extrabold text-sm tracking-wider border border-luna-slate transition">WOLVER</button>
+                <button onclick="quickFilterBrand('FERCOL')" class="px-3.5 py-1.5 rounded-lg bg-luna-cobalt hover:bg-luna-crimson text-white font-display italic font-extrabold text-sm tracking-wider border border-luna-slate transition">FERCOL</button>
+                <button onclick="quickFilterBrand('ECO-LUBE')" class="px-3.5 py-1.5 rounded-lg bg-luna-cobalt hover:bg-luna-crimson text-white font-display italic font-extrabold text-sm tracking-wider border border-luna-slate transition">ECO-LUBE</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Columna Derecha: Tarjeta Asesor Matias Figueroa Luna -->
+          <div class="lg:col-span-5">
+            <div class="bg-luna-cobalt/95 border-2 border-luna-slate rounded-2xl p-6 sm:p-7 shadow-2xl space-y-5 relative">
+              <div class="absolute -top-3.5 right-5 bg-luna-gold text-luna-navy font-display italic font-black uppercase text-xs px-3.5 py-1 rounded-md shadow">
+                Atención Directa B2B
+              </div>
+
+              <div class="flex items-center gap-4 border-b border-luna-slate pb-4">
+                <div class="w-14 h-14 rounded-2xl bg-luna-navy border-2 border-luna-gold flex items-center justify-center shrink-0">
+                  <span class="font-display italic font-black text-2xl text-luna-gold">MFL</span>
+                </div>
+                <div>
+                  <h2 class="font-display italic font-extrabold text-2xl text-white uppercase leading-none">Matias Figueroa Luna</h2>
+                  <p class="text-sm text-luna-gold font-semibold mt-1">Asesor de Ventas — Córdoba</p>
+                </div>
+              </div>
+
+              <div class="space-y-3 text-sm">
+                <div class="flex items-start gap-3">
+                  <span class="w-7 h-7 rounded-lg bg-luna-crimson/20 border border-luna-crimson/50 text-luna-gold flex items-center justify-center shrink-0 mt-0.5">
+                    <i class="ph-bold ph-tag"></i>
+                  </span>
+                  <p class="text-slate-200"><strong class="text-white">Descuentos por Caja Cerrada:</strong> Hasta 20% OFF directo y escalas especiales llevando 3, 5 o 10 cajas.</p>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span class="w-7 h-7 rounded-lg bg-luna-crimson/20 border border-luna-crimson/50 text-luna-gold flex items-center justify-center shrink-0 mt-0.5">
+                    <i class="ph-bold ph-gift"></i>
+                  </span>
+                  <p class="text-slate-200"><strong class="text-white">Regalos Comerciales:</strong> Zapatillas BOZAKI (AMA Max Moto) y Lámparas Philips LED M4 (WOLVER).</p>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span class="w-7 h-7 rounded-lg bg-luna-crimson/20 border border-luna-crimson/50 text-luna-gold flex items-center justify-center shrink-0 mt-0.5">
+                    <i class="ph-bold ph-truck"></i>
+                  </span>
+                  <p class="text-slate-200"><strong class="text-white">Entregas en 48 hs:</strong> En Córdoba Capital, previo depósito bancario o pago en efectivo.</p>
+                </div>
+              </div>
+
+              <div class="bg-luna-navy rounded-xl p-4 border border-luna-slate flex items-center justify-between gap-3">
+                <div>
+                  <span class="text-[11px] uppercase tracking-wider text-slate-400 block font-semibold">WhatsApp Directo</span>
+                  <span class="font-display font-extrabold text-2xl text-white tracking-wide">351 514-1141</span>
+                </div>
+                <a href="https://wa.me/5493515141141?text=Hola%20Matias!%20Quiero%20consultar%20condiciones%20para%20mi%20comercio%20en%20C%C3%B3rdoba." target="_blank" rel="noopener" class="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 transition">
+                  <i class="ph-fill ph-whatsapp-logo text-base"></i> Escribir
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. BENEFICIOS COMERCIALES Y PROMOS POR VOLUMEN -->
+    <section id="beneficios" class="py-14 sm:py-18 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-10">
+        <span class="text-luna-crimson font-extrabold text-xs uppercase tracking-widest">Rentabilidad para Comercios y Talleres</span>
+        <h2 class="font-display italic font-black text-3xl sm:text-5xl text-luna-navy uppercase mt-1">Promociones Destacadas Noviembre 2026</h2>
+        <p class="text-slate-600 mt-2 text-sm sm:text-base">Combiná productos por caja cerrada y accedé a los mejores costos unitarios de Córdoba Capital.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Card 1: AMA Max Moto -->
+        <div class="bg-white rounded-2xl p-6 border-2 border-slate-200 hover:border-luna-crimson shadow-sm transition flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="px-3 py-1 rounded-md bg-luna-navy text-luna-gold font-display italic font-extrabold text-xs uppercase tracking-wider">AMA LUBRICANTS</span>
+              <span class="px-2.5 py-1 rounded-md bg-luna-crimson text-white font-extrabold text-xs">20% OFF + REGALO</span>
+            </div>
+            <h3 class="font-display italic font-extrabold text-2xl text-luna-navy uppercase">Max Moto 4T Street</h3>
+            <p class="text-slate-600 text-sm mt-2">
+              Semisintéticos 10W30 / 10W40 / 15W50 a <strong class="text-luna-navy">$11.990 c/u</strong> y Sintético 10W50 a <strong class="text-luna-navy">$18.790 c/u</strong>.
+            </p>
+            <div class="mt-4 p-3.5 rounded-xl bg-amber-50 border border-luna-gold text-xs font-semibold text-luna-navy flex items-center gap-3">
+              <i class="ph-fill ph-sneaker text-2xl text-luna-crimson shrink-0"></i>
+              <span>Comprando <strong>2 cajas</strong> (surtidas o no), llevás <strong>1 par de zapatillas BOZAKI de regalo</strong>.</span>
+            </div>
+          </div>
+          <button onclick="quickFilterBrand('AMA Lubricants')" class="mt-5 w-full py-2.5 rounded-xl bg-luna-navy hover:bg-luna-crimson text-white font-bold text-xs uppercase tracking-wider transition">
+            Ver Línea AMA
+          </button>
+        </div>
+
+        <!-- Card 2: WOLVER -->
+        <div class="bg-white rounded-2xl p-6 border-2 border-slate-200 hover:border-luna-crimson shadow-sm transition flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="px-3 py-1 rounded-md bg-luna-navy text-luna-gold font-display italic font-extrabold text-xs uppercase tracking-wider">WOLVER</span>
+              <span class="px-2.5 py-1 rounded-md bg-luna-crimson text-white font-extrabold text-xs">15% OFF + LED M4</span>
+            </div>
+            <h3 class="font-display italic font-extrabold text-2xl text-luna-navy uppercase">Power 4T & Special Racing</h3>
+            <p class="text-slate-600 text-sm mt-2">
+              15% de descuento comprando 24 unidades de 1 L (Semisintéticos desde <strong class="text-luna-navy">$14.440</strong> y 100% Sintéticos desde <strong class="text-luna-navy">$16.565</strong>).
+            </p>
+            <div class="mt-4 p-3.5 rounded-xl bg-amber-50 border border-luna-gold text-xs font-semibold text-luna-navy flex items-center gap-3">
+              <i class="ph-fill ph-lightbulb-filament text-2xl text-luna-crimson shrink-0"></i>
+              <span>Comprando <strong>3 cajas</strong> (surtidas o no), llevás <strong>1 Lámpara Philips LED M4 de regalo</strong>.</span>
+            </div>
+          </div>
+          <button onclick="quickFilterBrand('WOLVER')" class="mt-5 w-full py-2.5 rounded-xl bg-luna-navy hover:bg-luna-crimson text-white font-bold text-xs uppercase tracking-wider transition">
+            Ver Línea WOLVER
+          </button>
+        </div>
+
+        <!-- Card 3: Escalas x3 / x5 / x10 Cajas -->
+        <div class="bg-white rounded-2xl p-6 border-2 border-slate-200 hover:border-luna-crimson shadow-sm transition flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="px-3 py-1 rounded-md bg-luna-navy text-luna-gold font-display italic font-extrabold text-xs uppercase tracking-wider">ESCALA MAYORISTA</span>
+              <span class="px-2.5 py-1 rounded-md bg-luna-gold text-luna-navy font-extrabold text-xs">X3 / X5 / X10 CAJAS</span>
+            </div>
+            <h3 class="font-display italic font-extrabold text-2xl text-luna-navy uppercase">Alta Rotación 20W-50 & Aerosoles</h3>
+            <p class="text-slate-600 text-sm mt-2">
+              • <strong>AMA Metal 5 20W50 1L:</strong> $7.790 (x3) • $7.590 (x5) • <strong>$7.375 (x10)</strong>.<br>
+              • <strong>FERCOL Doypack 900cc:</strong> $6.375 (x3) • $6.190 (x5) • <strong>$5.990 (x10)</strong> (y combos desde <strong>$5.390</strong>).
+            </p>
+          </div>
+          <button onclick="quickFilterBrand('FERCOL')" class="mt-5 w-full py-2.5 rounded-xl bg-luna-navy hover:bg-luna-crimson text-white font-bold text-xs uppercase tracking-wider transition">
+            Ver Escalas y Combos
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. CATÁLOGO INTERACTIVO Y ARMADOR DE PEDIDO WHATSAPP -->
+    <section id="catalogo" class="py-14 sm:py-18 bg-white border-y border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+          <div>
+            <span class="text-luna-crimson font-extrabold text-xs uppercase tracking-widest">Precios Vigentes Noviembre 2026</span>
+            <h2 class="font-display italic font-black text-3xl sm:text-5xl text-luna-navy uppercase mt-1">Catálogo Mayorista Motos</h2>
+            <p class="text-slate-600 text-sm mt-1">Filtrá por marca o buscá por viscosidad/producto. Sumá artículos al carrito para enviar tu pedido directo por WhatsApp.</p>
+          </div>
+
+          <!-- Buscador -->
+          <div class="relative w-full md:w-80">
+            <i class="ph-bold ph-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+            <input type="text" id="search-input" oninput="renderCatalog()" placeholder="Buscar 10W40, Katana, Metal 5, cadena..." class="w-full pl-10 pr-4 py-2.5 rounded-xl border-2 border-slate-200 bg-luna-ice focus:bg-white focus:border-luna-navy focus:outline-none text-sm font-medium" />
+          </div>
+        </div>
+
+        <!-- Tabs por Marca -->
+        <div id="brand-filters" class="flex flex-wrap gap-2 mb-6">
+          <button onclick="setBrandFilter('Todas')" data-brand="Todas" class="brand-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold uppercase tracking-wide bg-luna-navy text-luna-gold transition">Todas las Marcas</button>
+          <button onclick="setBrandFilter('IPONE')" data-brand="IPONE" class="brand-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold uppercase tracking-wide bg-luna-ice text-luna-navy hover:bg-slate-200 transition">IPONE</button>
+          <button onclick="setBrandFilter('AMA Lubricants')" data-brand="AMA Lubricants" class="brand-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold uppercase tracking-wide bg-luna-ice text-luna-navy hover:bg-slate-200 transition">AMA Lubricants</button>
+          <button onclick="setBrandFilter('WOLVER')" data-brand="WOLVER" class="brand-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold uppercase tracking-wide bg-luna-ice text-luna-navy hover:bg-slate-200 transition">WOLVER</button>
+          <button onclick="setBrandFilter('FERCOL')" data-brand="FERCOL" class="brand-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold uppercase tracking-wide bg-luna-ice text-luna-navy hover:bg-slate-200 transition">FERCOL</button>
+          <button onclick="setBrandFilter('ECO-LUBE')" data-brand="ECO-LUBE" class="brand-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold uppercase tracking-wide bg-luna-ice text-luna-navy hover:bg-slate-200 transition">ECO-LUBE</button>
+        </div>
+
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-slate-500 mb-5">
+          <span id="results-count" class="font-semibold text-luna-navy">Cargando catálogo...</span>
+          <span>Precios unitarios en pesos argentinos ($) • Válidos según condiciones de caja/escala</span>
+        </div>
+
+        <!-- Grilla de Productos -->
+        <div id="catalog-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+      </div>
+    </section>
+
+    <!-- 4. CONDICIONES DE ENTREGA Y PAGO -->
+    <section id="logistica" class="py-14 sm:py-18 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="racing-checkered-bg text-white rounded-3xl p-8 sm:p-12 border-2 border-luna-slate shadow-2xl">
+        <div class="grid md:grid-cols-12 gap-8 items-center">
+          <div class="md:col-span-7 space-y-4">
+            <span class="inline-block px-3 py-1 rounded-md bg-luna-gold text-luna-navy font-extrabold text-xs uppercase tracking-wider">Operativa Córdoba Capital</span>
+            <h2 class="font-display italic font-black text-3xl sm:text-4xl uppercase">Entregas garantizadas dentro de las 48 hs</h2>
+            <p class="text-slate-200 text-sm sm:text-base leading-relaxed">
+              Coordinamos tu pedido de forma ágil para que tu local o taller tenga reposición rápida y segura en toda la ciudad de Córdoba Capital.
+            </p>
+            <div class="grid sm:grid-cols-2 gap-4 pt-2">
+              <div class="bg-luna-cobalt/90 p-4 rounded-xl border border-luna-slate">
+                <i class="ph-bold ph-clock-countdown text-luna-gold text-2xl mb-1.5"></i>
+                <h4 class="font-bold text-sm text-white">Plazo de Entrega</h4>
+                <p class="text-xs text-slate-300 mt-1">Dentro de las <strong>48 hs</strong> en Córdoba Capital.</p>
+              </div>
+              <div class="bg-luna-cobalt/90 p-4 rounded-xl border border-luna-slate">
+                <i class="ph-bold ph-wallet text-luna-gold text-2xl mb-1.5"></i>
+                <h4 class="font-bold text-sm text-white">Modalidad de Pago</h4>
+                <p class="text-xs text-slate-300 mt-1">Previo <strong>depósito bancario</strong> o pago en <strong>efectivo</strong>.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="md:col-span-5 bg-luna-cobalt rounded-2xl p-6 border border-luna-gold/40 space-y-4">
+            <h3 class="font-display italic font-extrabold text-2xl text-white uppercase">Contacto Comercial Directo</h3>
+            <div class="space-y-1.5 text-sm text-slate-200">
+              <p><strong class="text-luna-gold">Asesor:</strong> Matias Figueroa Luna</p>
+              <p><strong class="text-luna-gold">Zona:</strong> Asesor de Ventas — Córdoba</p>
+              <p><strong class="text-luna-gold">WhatsApp:</strong> 3515141141</p>
+            </div>
+            <a href="https://wa.me/5493515141141?text=Hola%20Matias!%20Quiero%20coordinar%20un%20pedido%20para%20mi%20comercio%20en%20C%C3%B3rdoba%20Capital." target="_blank" rel="noopener" class="w-full flex items-center justify-center gap-2 bg-luna-crimson hover:bg-luna-crimsonDark text-white font-display italic font-extrabold uppercase tracking-wider text-base py-3.5 rounded-xl shadow-lg transition">
+              <i class="ph-fill ph-whatsapp-logo text-xl"></i>
+              <span>Enviar Mensaje a Matias</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== VISTA 2: /BRANDKIT INTERACTIVO ==================== -->
+  <section id="view-brandkit" class="hidden py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Cabecera Brand Kit -->
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-8 border-b-2 border-slate-200 mb-10">
+      <div>
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-luna-crimson text-white text-xs font-extrabold uppercase tracking-wider mb-2">
+          <i class="ph-bold ph-swatches"></i> Identidad Visual Oficial
+        </span>
+        <h1 class="font-display italic font-black text-3xl sm:text-5xl text-luna-navy uppercase">Brand Kit — Distribuidora LUNA</h1>
+        <p class="text-slate-600 text-sm sm:text-base mt-1">Logotipos oficiales descargables en SVG y PNG transparente, paleta de colores Racing & Industrial y tarjeta digital.</p>
+      </div>
+      <button onclick="switchView('landing')" class="self-start md:self-auto inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-luna-navy hover:bg-luna-cobalt text-white text-sm font-bold transition">
+        <i class="ph-bold ph-arrow-left"></i> Volver al Catálogo
+      </button>
+    </div>
+
+    <!-- 1. Logotipos Oficiales Descargables (SVG + PNG) -->
+    <div class="mb-12">
+      <h2 class="font-display italic font-extrabold text-2xl text-luna-navy uppercase mb-4 flex items-center gap-2">
+        <span class="w-7 h-7 rounded-lg bg-luna-crimson text-white text-sm font-black flex items-center justify-center not-italic">1</span>
+        Logotipo Oficial (Descarga directa SVG y PNG Transparente)
+      </h2>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Logo Versión Oscura -->
+        <div class="racing-checkered-bg rounded-2xl p-7 border-2 border-luna-slate flex flex-col justify-between items-center space-y-6 shadow-lg">
+          <span class="text-xs uppercase tracking-widest text-luna-gold font-bold self-start">Versión Principal (Sobre Fondo Oscuro)</span>
+          <div id="bk-logo-dark" class="py-4">
+            <svg width="360" height="105" viewBox="0 0 430 125" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="bkDarkMoon" x1="15" y1="15" x2="95" y2="105" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#2B59C3"/>
+                  <stop offset="45%" stop-color="#162048"/>
+                  <stop offset="100%" stop-color="#090E24"/>
+                </linearGradient>
+                <radialGradient id="bkDarkDrop" cx="42%" cy="35%" r="60%">
+                  <stop offset="0%" stop-color="#FFF3A1"/>
+                  <stop offset="35%" stop-color="#F7C216"/>
+                  <stop offset="80%" stop-color="#FF9E00"/>
+                  <stop offset="100%" stop-color="#C96A00"/>
+                </radialGradient>
+                <linearGradient id="bkDarkSwoosh" x1="10" y1="75" x2="125" y2="95" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#DC1E35"/>
+                  <stop offset="50%" stop-color="#FF9E00"/>
+                  <stop offset="100%" stop-color="#F7C216"/>
+                </linearGradient>
+                <linearGradient id="bkDarkLine" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#DC1E35"/>
+                  <stop offset="50%" stop-color="#F7C216"/>
+                  <stop offset="100%" stop-color="#FF9E00"/>
+                </linearGradient>
+              </defs>
+              <path d="M84 16C52.5 16 27 40.5 27 70.8C27 96.4 45.2 117.8 69.8 123.5C50.6 115.6 37.5 96.8 37.5 74.8C37.5 45.8 61.1 22.3 90.2 22.3C93.8 22.3 97.3 22.7 100.7 23.4C95.6 18.8 90 16 84 16Z" fill="url(#bkDarkMoon)" stroke="#5B66A6" stroke-width="1.2"/>
+              <path d="M40 44C47 30 61 20 78 18.5C63 23 50 33 43 47L40 44Z" fill="#7CC6FE" opacity="0.65"/>
+              <path d="M86 38C86 38 66 61.5 66 75.5C66 86.5 74.9 95.5 86 95.5C97.1 95.5 106 86.5 106 75.5C106 61.5 86 38 86 38Z" fill="url(#bkDarkDrop)" stroke="#FFF2A6" stroke-width="1"/>
+              <ellipse cx="78" cy="70" rx="3.2" ry="9" transform="rotate(-18 78 70)" fill="#FFFFFF" opacity="0.75"/>
+              <path d="M26 56C10 73 14 96 42 103C68 109.5 101 94 123 76C101 89 69 98 46 92C23 86 19 69 26 56Z" fill="url(#bkDarkSwoosh)"/>
+              <polygon points="132,27 166,27 163,32 129,32" fill="url(#bkDarkLine)"/>
+              <text x="172" y="34" fill="#FFFFFF" font-family="Barlow Condensed, Arial, sans-serif" font-style="italic" font-weight="800" font-size="18" letter-spacing="3.5">DISTRIBUIDORA</text>
+              <polygon points="356,27 390,27 387,32 353,32" fill="url(#bkDarkLine)"/>
+              <text x="132" y="88" fill="#FFFFFF" stroke="#DC1E35" stroke-width="2.5" paint-order="stroke" font-family="Barlow Condensed, Arial, sans-serif" font-style="italic" font-weight="900" font-size="64" letter-spacing="2">LUNA</text>
+              <path d="M126 98C205 88 310 89 406 99C312 94 205 94 126 98Z" fill="url(#bkDarkLine)"/>
+              <text x="142" y="115" fill="#F7C216" font-family="Barlow Condensed, Arial, sans-serif" font-style="italic" font-weight="800" font-size="16" letter-spacing="3.2">ACEITES Y LUBRICANTES</text>
+            </svg>
+          </div>
+          <div class="w-full grid grid-cols-2 gap-3">
+            <button onclick="downloadLogo('dark', 'svg')" class="py-2.5 px-3 rounded-xl bg-luna-gold hover:bg-luna-amber text-luna-navy font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition">
+              <i class="ph-bold ph-download-simple text-base"></i> Descargar SVG
+            </button>
+            <button onclick="downloadLogo('dark', 'png')" class="py-2.5 px-3 rounded-xl bg-luna-crimson hover:bg-luna-crimsonDark text-white font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition">
+              <i class="ph-bold ph-image text-base"></i> Descargar PNG
+            </button>
+          </div>
+        </div>
+
+        <!-- Logo Versión Clara -->
+        <div class="bg-white rounded-2xl p-7 border-2 border-slate-200 flex flex-col justify-between items-center space-y-6 shadow-sm">
+          <span class="text-xs uppercase tracking-widest text-slate-500 font-bold self-start">Versión Clara (Papelería, Listas PDF y Facturas)</span>
+          <div id="bk-logo-light" class="py-4">
+            <svg width="360" height="105" viewBox="0 0 430 125" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="bkLightMoon" x1="15" y1="15" x2="95" y2="105" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#1E4B9E"/>
+                  <stop offset="50%" stop-color="#0E1530"/>
+                  <stop offset="100%" stop-color="#060B1E"/>
+                </linearGradient>
+                <radialGradient id="bkLightDrop" cx="42%" cy="35%" r="60%">
+                  <stop offset="0%" stop-color="#FFF3A1"/>
+                  <stop offset="35%" stop-color="#F7C216"/>
+                  <stop offset="80%" stop-color="#FF9E00"/>
+                  <stop offset="100%" stop-color="#C96A00"/>
+                </radialGradient>
+                <linearGradient id="bkLightSwoosh" x1="10" y1="75" x2="125" y2="95" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#F7C216"/>
+                  <stop offset="55%" stop-color="#FF9E00"/>
+                  <stop offset="100%" stop-color="#DC1E35"/>
+                </linearGradient>
+                <linearGradient id="bkLightLine" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#F7C216"/>
+                  <stop offset="50%" stop-color="#FF9E00"/>
+                  <stop offset="100%" stop-color="#DC1E35"/>
+                </linearGradient>
+              </defs>
+              <path d="M84 16C52.5 16 27 40.5 27 70.8C27 96.4 45.2 117.8 69.8 123.5C50.6 115.6 37.5 96.8 37.5 74.8C37.5 45.8 61.1 22.3 90.2 22.3C93.8 22.3 97.3 22.7 100.7 23.4C95.6 18.8 90 16 84 16Z" fill="url(#bkLightMoon)"/>
+              <path d="M40 44C47 30 61 20 78 18.5C63 23 50 33 43 47L40 44Z" fill="#60A5FA" opacity="0.7"/>
+              <path d="M86 38C86 38 66 61.5 66 75.5C66 86.5 74.9 95.5 86 95.5C97.1 95.5 106 86.5 106 75.5C106 61.5 86 38 86 38Z" fill="url(#bkLightDrop)" stroke="#D97706" stroke-width="1"/>
+              <ellipse cx="78" cy="70" rx="3.2" ry="9" transform="rotate(-18 78 70)" fill="#FFFFFF" opacity="0.8"/>
+              <path d="M26 56C10 73 14 96 42 103C68 109.5 101 94 123 76C101 89 69 98 46 92C23 86 19 69 26 56Z" fill="url(#bkLightSwoosh)"/>
+              <polygon points="132,27 166,27 163,32 129,32" fill="url(#bkLightLine)"/>
+              <text x="172" y="34" fill="#0E1530" font-family="Barlow Condensed, Arial, sans-serif" font-style="italic" font-weight="800" font-size="18" letter-spacing="3.5">DISTRIBUIDORA</text>
+              <polygon points="356,27 390,27 387,32 353,32" fill="url(#bkLightLine)"/>
+              <text x="132" y="88" fill="#0E1530" font-family="Barlow Condensed, Arial, sans-serif" font-style="italic" font-weight="900" font-size="64" letter-spacing="2">LUNA</text>
+              <path d="M126 98C205 88 310 89 406 99C312 94 205 94 126 98Z" fill="url(#bkLightLine)"/>
+              <text x="142" y="115" fill="#0E1530" font-family="Barlow Condensed, Arial, sans-serif" font-style="italic" font-weight="800" font-size="16" letter-spacing="3.2">ACEITES Y LUBRICANTES</text>
+            </svg>
+          </div>
+          <div class="w-full grid grid-cols-2 gap-3">
+            <button onclick="downloadLogo('light', 'svg')" class="py-2.5 px-3 rounded-xl bg-luna-navy hover:bg-luna-cobalt text-white font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition">
+              <i class="ph-bold ph-download-simple text-base"></i> Descargar SVG
+            </button>
+            <button onclick="downloadLogo('light', 'png')" class="py-2.5 px-3 rounded-xl bg-luna-crimson hover:bg-luna-crimsonDark text-white font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition">
+              <i class="ph-bold ph-image text-base"></i> Descargar PNG
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Paleta de Colores Oficial -->
+    <div class="mb-12">
+      <h2 class="font-display italic font-extrabold text-2xl text-luna-navy uppercase mb-4 flex items-center gap-2">
+        <span class="w-7 h-7 rounded-lg bg-luna-crimson text-white text-sm font-black flex items-center justify-center not-italic">2</span>
+        Paleta Cromática Racing & Industrial (Click para copiar HEX)
+      </h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs">
+          <div class="h-24 bg-[#0E1530]"></div>
+          <div class="p-3.5">
+            <h3 class="font-bold text-xs text-luna-navy">Midnight Racing Navy</h3>
+            <p class="text-[11px] text-slate-500 mt-0.5">Fondo principal</p>
+            <button onclick="copyText('#0E1530', 'Código #0E1530 copiado')" class="mt-2.5 w-full py-1.5 px-2 rounded-lg bg-luna-ice hover:bg-luna-gold font-mono text-xs font-bold flex items-center justify-between transition">
+              <span>#0E1530</span><i class="ph-bold ph-copy"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs">
+          <div class="h-24 bg-[#162048]"></div>
+          <div class="p-3.5">
+            <h3 class="font-bold text-xs text-luna-navy">Deep Cobalt Steel</h3>
+            <p class="text-[11px] text-slate-500 mt-0.5">Tarjetas oscuras</p>
+            <button onclick="copyText('#162048', 'Código #162048 copiado')" class="mt-2.5 w-full py-1.5 px-2 rounded-lg bg-luna-ice hover:bg-luna-gold font-mono text-xs font-bold flex items-center justify-between transition">
+              <span>#162048</span><i class="ph-bold ph-copy"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs">
+          <div class="h-24 bg-[#DC1E35]"></div>
+          <div class="p-3.5">
+            <h3 class="font-bold text-xs text-luna-navy">Motocross Crimson</h3>
+            <p class="text-[11px] text-slate-500 mt-0.5">Ofertas y CTAs</p>
+            <button onclick="copyText('#DC1E35', 'Código #DC1E35 copiado')" class="mt-2.5 w-full py-1.5 px-2 rounded-lg bg-luna-ice hover:bg-luna-gold font-mono text-xs font-bold flex items-center justify-between transition">
+              <span>#DC1E35</span><i class="ph-bold ph-copy"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs">
+          <div class="h-24 bg-[#F7C216]"></div>
+          <div class="p-3.5">
+            <h3 class="font-bold text-xs text-luna-navy">Golden Oil Amber</h3>
+            <p class="text-[11px] text-slate-500 mt-0.5">Gota aceite y destaques</p>
+            <button onclick="copyText('#F7C216', 'Código #F7C216 copiado')" class="mt-2.5 w-full py-1.5 px-2 rounded-lg bg-luna-ice hover:bg-luna-gold font-mono text-xs font-bold flex items-center justify-between transition">
+              <span>#F7C216</span><i class="ph-bold ph-copy"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs">
+          <div class="h-24 bg-[#5B66A6]"></div>
+          <div class="p-3.5">
+            <h3 class="font-bold text-xs text-luna-navy">Checkered Slate</h3>
+            <p class="text-[11px] text-slate-500 mt-0.5">Trama racing cuadros</p>
+            <button onclick="copyText('#5B66A6', 'Código #5B66A6 copiado')" class="mt-2.5 w-full py-1.5 px-2 rounded-lg bg-luna-ice hover:bg-luna-gold font-mono text-xs font-bold flex items-center justify-between transition">
+              <span>#5B66A6</span><i class="ph-bold ph-copy"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs">
+          <div class="h-24 bg-[#FFFFFF] border-b border-slate-200"></div>
+          <div class="p-3.5">
+            <h3 class="font-bold text-xs text-luna-navy">Crisp Pure White</h3>
+            <p class="text-[11px] text-slate-500 mt-0.5">Tipografía y tablas</p>
+            <button onclick="copyText('#FFFFFF', 'Código #FFFFFF copiado')" class="mt-2.5 w-full py-1.5 px-2 rounded-lg bg-luna-ice hover:bg-luna-gold font-mono text-xs font-bold flex items-center justify-between transition">
+              <span>#FFFFFF</span><i class="ph-bold ph-copy"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Tipografía y Tarjeta Digital -->
+    <div class="grid lg:grid-cols-12 gap-8">
+      <div class="lg:col-span-6 bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 space-y-5">
+        <h2 class="font-display italic font-extrabold text-2xl text-luna-navy uppercase flex items-center gap-2">
+          <span class="w-7 h-7 rounded-lg bg-luna-crimson text-white text-sm font-black flex items-center justify-center not-italic">3</span>
+          Tipografía y Sistema Gráfico
+        </h2>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="p-4 rounded-xl bg-luna-ice border border-slate-200">
+            <span class="text-[11px] font-extrabold text-luna-crimson uppercase">Titulares & Marca</span>
+            <p class="font-display italic font-black text-2xl text-luna-navy uppercase mt-1">Barlow Condensed</p>
+            <p class="text-xs text-slate-600 mt-1">ExtraBold / Black Italic — Potencia visual estilo motorsport.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-luna-ice border border-slate-200">
+            <span class="text-[11px] font-extrabold text-luna-crimson uppercase">Catálogo & Precios</span>
+            <p class="font-sans font-bold text-2xl text-luna-navy mt-1">Inter</p>
+            <p class="text-xs text-slate-600 mt-1">SemiBold / Bold — Lectura rápida de viscosidades y escalas.</p>
+          </div>
+        </div>
+        <div class="p-4 rounded-xl bg-luna-navy text-white flex items-center justify-between gap-4">
+          <div>
+            <span class="text-xs font-bold text-luna-gold uppercase block">Textura Oficial de Marca</span>
+            <p class="text-xs text-slate-300 mt-0.5">Trama ajedrezada racing en tonos azul noche (#0E1530 / #5B66A6) combinada con gota dorada de lubricante.</p>
+          </div>
+          <div class="w-16 h-12 rounded-lg racing-checkered-bg border border-luna-gold/50 shrink-0"></div>
+        </div>
+      </div>
+
+      <!-- Tarjeta Digital de Presentación -->
+      <div class="lg:col-span-6">
+        <h2 class="font-display italic font-extrabold text-2xl text-luna-navy uppercase mb-4 flex items-center gap-2">
+          <span class="w-7 h-7 rounded-lg bg-luna-crimson text-white text-sm font-black flex items-center justify-center not-italic">4</span>
+          Tarjeta Digital de Contacto
+        </h2>
+        <div class="racing-checkered-bg text-white rounded-2xl p-6 sm:p-7 border-2 border-luna-crimson shadow-xl space-y-5">
+          <div class="flex items-center justify-between border-b border-luna-slate pb-4">
+            <div>
+              <span class="font-display italic font-black text-2xl tracking-wide text-white">DISTRIBUIDORA <span class="text-luna-gold">LUNA</span></span>
+              <span class="block text-xs text-luna-gold font-bold uppercase tracking-widest">Aceites y Lubricantes • Córdoba</span>
+            </div>
+            <span class="px-3 py-1 rounded-md bg-luna-crimson text-white font-extrabold text-xs">WA: 3515141141</span>
+          </div>
+
+          <div>
+            <h3 class="font-display italic font-black text-3xl text-white uppercase">Matias Figueroa Luna</h3>
+            <p class="text-luna-gold font-bold text-sm uppercase tracking-wider">Asesor de Ventas — Córdoba Capital</p>
+          </div>
+
+          <p class="text-xs text-slate-200 leading-relaxed">
+            <strong>Marcas:</strong> IPONE • AMA Lubricants • WOLVER • FERCOL • ECO-LUBE.<br>
+            <strong>Condiciones:</strong> Entregas dentro de las 48 hs previo depósito bancario o pago en efectivo.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-2.5">
+            <button onclick="copyText('Matias Figueroa Luna — Asesor de Ventas Distribuidora LUNA (Córdoba Capital) | WhatsApp: 3515141141 | Entregas dentro de las 48 hs previo depósito o pago en efectivo.', 'Datos de contacto copiados')" class="flex-1 py-2.5 px-4 rounded-xl bg-luna-gold hover:bg-luna-amber text-luna-navy font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition">
+              <i class="ph-bold ph-copy text-base"></i> Copiar Datos de Contacto
+            </button>
+            <a href="https://wa.me/5493515141141?text=Hola%20Matias!%20Te%20escribo%20desde%20tu%20tarjeta%20digital%20de%20Distribuidora%20LUNA." target="_blank" rel="noopener" class="py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition">
+              <i class="ph-fill ph-whatsapp-logo text-base"></i> Abrir WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== DRAWER ARMADOR DE PEDIDO WHATSAPP ==================== -->
+  <div id="cart-drawer" class="fixed inset-0 z-50 hidden">
+    <div onclick="toggleCartDrawer()" class="absolute inset-0 bg-luna-navy/80 backdrop-blur-xs"></div>
+    <div class="absolute right-0 top-0 bottom-0 w-full max-w-md bg-white shadow-2xl flex flex-col">
+      <div class="p-5 bg-luna-navy text-white flex items-center justify-between border-b-2 border-luna-crimson">
+        <div>
+          <h3 class="font-display italic font-black text-xl uppercase flex items-center gap-2">
+            <i class="ph-bold ph-shopping-cart text-luna-gold"></i> Pedido Mayorista LUNA
+          </h3>
+          <p class="text-xs text-slate-300">Armá tu pedido y envialo directo a Matias</p>
+        </div>
+        <button onclick="toggleCartDrawer()" class="p-2 rounded-lg bg-luna-cobalt hover:bg-luna-slate text-white">
+          <i class="ph-bold ph-x text-lg"></i>
+        </button>
+      </div>
+
+      <div id="cart-items" class="flex-1 overflow-y-auto p-5 space-y-3"></div>
+
+      <div class="p-5 border-t border-slate-200 bg-luna-ice space-y-3">
+        <div class="flex items-center justify-between text-sm">
+          <span class="text-slate-600 font-semibold">Subtotal estimado (unitario):</span>
+          <span id="cart-total" class="font-display font-black text-2xl text-luna-navy">$0</span>
+        </div>
+        <p class="text-[11px] text-slate-500">
+          * Al enviar por WhatsApp aplicamos la escala exacta por cantidad de cajas (x3, x5 o x10) y los regalos vigentes. Entrega en 48 hs previo depósito o efectivo.
+        </p>
+        <button onclick="sendOrderWhatsApp()" class="w-full py-3.5 px-4 rounded-xl bg-luna-crimson hover:bg-luna-crimsonDark text-white font-display italic font-extrabold uppercase tracking-wider text-base flex items-center justify-center gap-2 shadow-lg transition">
+          <i class="ph-fill ph-whatsapp-logo text-xl"></i> Enviar Pedido por WhatsApp
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-luna-navy text-slate-300 border-t-2 border-luna-slate py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm">
+      <div class="font-display italic font-bold text-white text-base uppercase tracking-wide">
+        DISTRIBUIDORA <span class="text-luna-gold">LUNA</span> • Aceites y Lubricantes
+      </div>
+      <div class="text-center sm:text-right">
+        <span>Matias Figueroa Luna — Asesor de Ventas • Córdoba Capital • WhatsApp: <strong class="text-luna-gold">3515141141</strong></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== JAVASCRIPT ==================== -->
+  <script>
+    // Catálogo completo Noviembre 2026 (exacto según listado oficial, sin mención externa)
+    const PRODUCTS = [
+      // IPONE
+      { id: 'ip-1', brand: 'IPONE', line: 'Aceites 4T Sintéticos', name: 'Katana Sport 10W-40 / 10W-50 / 10W-60', spec: '100% Sintético • Caja 15 x 1 L', condition: 'Caja cerrada (10% OFF)', priceBefore: 44490, price: 40040, scaleNote: '' },
+      { id: 'ip-2', brand: 'IPONE', line: 'Aceites 4T Sintéticos', name: 'Katana Off Road 10W-40 / 10W-60', spec: '100% Sintético • Caja 15 x 1 L', condition: 'Caja cerrada (10% OFF)', priceBefore: 46990, price: 42290, scaleNote: '' },
+      { id: 'ip-3', brand: 'IPONE', line: 'Aceites 4T Mineral', name: 'M4 20W-50 Standard', spec: 'Mineral • Caja 15 x 1 L', condition: 'Comprando 2 cajas (15% OFF)', priceBefore: 18990, price: 16140, scaleNote: '' },
+      { id: 'ip-4', brand: 'IPONE', line: 'Tecnología Sintética', name: 'R4000 10W-40 / 15W-50', spec: 'Tecnología Sintética • Caja 15 x 1 L', condition: 'Caja cerrada (10% OFF)', priceBefore: 29490, price: 26540, scaleNote: '' },
+      { id: 'ip-5', brand: 'IPONE', line: 'Semisintéticos', name: '10.3 (10W30) / 10.4 (10W40) / 15.5 (15W50) / 20.5 (20W50)', spec: 'Semisintético • Caja 15 x 1 L', condition: 'Caja cerrada (10% OFF)', priceBefore: 25490, price: 22940, scaleNote: '' },
+      { id: 'ip-6', brand: 'IPONE', line: 'Cuidado de Cadenas', name: 'X-Trem Chain Off Road 750 cc', spec: 'Aerosol lubricante cadena 750 cc', condition: '12 unid. surtidas (10% OFF)', priceBefore: 54990, price: 49490, scaleNote: '' },
+      { id: 'ip-7', brand: 'IPONE', line: 'Cuidado de Cadenas', name: 'X-Trem Chain Road 750 cc', spec: 'Aerosol lubricante cadena 750 cc', condition: '12 unid. surtidas (10% OFF)', priceBefore: 53490, price: 48140, scaleNote: '' },
+      { id: 'ip-8', brand: 'IPONE', line: 'Cuidado de Cadenas', name: 'Chain Cleaner 750 cc', spec: 'Desengrasante cadena 750 cc', condition: '12 unid. surtidas (10% OFF)', priceBefore: 54990, price: 49490, scaleNote: '' },
+      { id: 'ip-9', brand: 'IPONE', line: 'Cuidado de Cadenas', name: 'X-Trem Chain Road 500 cc', spec: 'Aerosol lubricante cadena 500 cc', condition: '12 unid. surtidas (10% OFF)', priceBefore: 45490, price: 40940, scaleNote: '' },
+      { id: 'ip-10', brand: 'IPONE', line: 'Cuidado de Cadenas', name: 'X-Trem Chain Off Road 250 cc', spec: 'Aerosol lubricante cadena 250 cc', condition: '12 unid. surtidas (10% OFF)', priceBefore: 32490, price: 29240, scaleNote: '' },
+      { id: 'ip-11', brand: 'IPONE', line: 'Cuidado de Cadenas', name: 'X-Trem Chain Road 250 cc', spec: 'Aerosol lubricante cadena 250 cc', condition: '12 unid. surtidas (10% OFF)', priceBefore: 31490, price: 28340, scaleNote: '' },
+      { id: 'ip-12', brand: 'IPONE', line: 'Cuidado de Cadenas', name: 'White Chain / Red Chain / Blue Chain 250 cc', spec: 'Aerosol lubricante color 250 cc', condition: '12 unid. surtidas (10% OFF)', priceBefore: 26490, price: 23840, scaleNote: '' },
+      { id: 'ip-13', brand: 'IPONE', line: 'Suspensión', name: 'Fork Fluid Racing 3 / 7', spec: 'Fluido de horquilla • Envase 1 L', condition: '15 unid. surtidas (10% OFF)', priceBefore: 51990, price: 46790, scaleNote: '' },
+      { id: 'ip-14', brand: 'IPONE', line: 'Suspensión', name: 'Fork Fluid 5 / 10 / 15 / 20', spec: 'Fluido de horquilla • Envase 1 L', condition: '15 unid. surtidas (10% OFF)', priceBefore: 43990, price: 39590, scaleNote: '' },
+      { id: 'ip-15', brand: 'IPONE', line: 'Refrigerantes', name: 'Radiator Liquid (Nueva Presentación)', spec: 'Caja 15 x 1 L', condition: '1 caja (10% OFF)', priceBefore: 29990, price: 26990, scaleNote: '' },
+
+      // AMA LUBRICANTS
+      { id: 'ama-1', brand: 'AMA Lubricants', line: 'Max Moto 4T Street', name: 'Max Moto 10W-40 / 10W-30 / 15W-50', spec: 'Semisintético • API SN / JASO MA2', condition: '20% OFF + Zapatillas BOZAKI', priceBefore: 14990, price: 11990, scaleNote: 'Llevando 2 cajas = 1 par zapatillas BOZAKI regalo' },
+      { id: 'ama-2', brand: 'AMA Lubricants', line: 'Max Moto 4T Street', name: 'Max Moto 10W-50 Sintético', spec: '100% Sintético • API SN / JASO MA2', condition: '20% OFF + Zapatillas BOZAKI', priceBefore: 23490, price: 18790, scaleNote: 'Llevando 2 cajas = 1 par zapatillas BOZAKI regalo' },
+      { id: 'ama-3', brand: 'AMA Lubricants', line: 'Aceite 4T Mineral', name: 'Metal 5 20W-50 Mineral 4T (1 L)', spec: 'Envase 1 L • Alta rotación', condition: 'Escala x3 / x5 / x10 cajas', priceBefore: null, price: 7790, scaleNote: 'x3 cajas: $7.790 | x5: $7.590 | x10: $7.375 c/u' },
+      { id: 'ama-4', brand: 'AMA Lubricants', line: 'Suspensiones', name: 'Fork Tuner Light (2.5W-5W) / Medium (7.5W-10W) / Heavy (15W-20W)', spec: 'Caja 20 x 500 cc', condition: '15% OFF', priceBefore: 8190, price: 6960, scaleNote: '' },
+      { id: 'ama-5', brand: 'AMA Lubricants', line: 'Cuidado de Cadenas', name: 'Kit Cadena (Cleaner + Lube + Cepillo)', spec: 'Caja x 3 Kits', condition: '5% x1 | 10% x3 | 15% x5 cajas', priceBefore: 28990, price: 27540, scaleNote: 'x1: $27.540 | x3: $26.090 | x5: $24.640 c/u' },
+      { id: 'ama-6', brand: 'AMA Lubricants', line: 'Cuidado de Cadenas', name: 'Chain Lube Racing (Película seca)', spec: 'Competición moto / kart', condition: '10% x3 cajas | 15% x5 cajas', priceBefore: 18990, price: 17090, scaleNote: 'Lista: $18.990 | x3: $17.090 | x5: $16.140 c/u' },
+      { id: 'ama-7', brand: 'AMA Lubricants', line: 'Aerosoles Cadenas', name: 'Chain Lube Off Road 388 cc', spec: 'Caja x 12 unidades', condition: '10% x3 cajas | 15% x5 cajas', priceBefore: 10250, price: 9225, scaleNote: 'Lista: $10.250 | x3: $9.225 | x5: $8.715 c/u' },
+      { id: 'ama-8', brand: 'AMA Lubricants', line: 'Aerosoles Cadenas', name: 'Chain Lube Off Road 160 cc', spec: 'Caja x 12 unidades', condition: '10% x3 cajas | 15% x5 cajas', priceBefore: 8290, price: 7460, scaleNote: 'Lista: $8.290 | x3: $7.460 | x5: $7.045 c/u' },
+      { id: 'ama-9', brand: 'AMA Lubricants', line: 'Aerosoles Cadenas', name: 'Chain Lube Road 415 cc', spec: 'Caja x 12 unidades', condition: '10% x3 cajas | 15% x5 cajas', priceBefore: 17490, price: 15740, scaleNote: 'Lista: $17.490 | x3: $15.740 | x5: $14.865 c/u' },
+      { id: 'ama-10', brand: 'AMA Lubricants', line: 'Combos Dinámicos', name: 'Air Filter Oil Aerosol 160 cc', spec: 'Filtros de aire esponja • Caja x 12', condition: '10% x3 cajas | 15% x5 cajas', priceBefore: 7990, price: 7190, scaleNote: 'Lista: $7.990 | x3: $7.190 | x5: $6.790 c/u' },
+      { id: 'ama-11', brand: 'AMA Lubricants', line: 'Combos Dinámicos', name: 'Chain Cleaner 415 cc', spec: 'Desengrasante cadena • Caja x 12', condition: '10% x3 cajas | 15% x5 cajas', priceBefore: 11490, price: 10340, scaleNote: 'Lista: $11.490 | x3: $10.340 | x5: $9.765 c/u' },
+      { id: 'ama-12', brand: 'AMA Lubricants', line: 'Combos Dinámicos', name: 'Silicón 415 cc / F18 All In One 415 cc', spec: 'Uso múltiple • Caja x 12', condition: '10% x3 cajas | 15% x5 cajas', priceBefore: 7750, price: 6590, scaleNote: 'Lista: $7.750 | x5 cajas: $6.590 c/u' },
+      { id: 'ama-13', brand: 'AMA Lubricants', line: 'Combos Dinámicos', name: 'Super Cleaner Dieléctrico 415 cc', spec: 'Desengrasante dieléctrico • Caja x 12', condition: '10% x3 cajas | 15% x5 cajas', priceBefore: 9990, price: 8990, scaleNote: 'Lista: $9.990 | x3: $8.990 | x5: $8.490 c/u' },
+      { id: 'ama-14', brand: 'AMA Lubricants', line: 'Fluidos 500 cm³', name: 'Air Filter Oil 500 cm³', spec: 'Caja 20 x 500 cm³', condition: '5% OFF comprando 1 caja', priceBefore: 7990, price: 7590, scaleNote: '' },
+      { id: 'ama-15', brand: 'AMA Lubricants', line: 'Fluidos 500 cm³', name: 'Líquido de Frenos DOT 3 (500 cm³)', spec: 'Caja 20 x 500 cm³', condition: '5% OFF comprando 1 caja', priceBefore: 8990, price: 8540, scaleNote: '' },
+      { id: 'ama-16', brand: 'AMA Lubricants', line: 'Fluidos 500 cm³', name: 'Líquido de Frenos DOT 4 (500 cm³)', spec: 'Caja 20 x 500 cm³', condition: '5% OFF comprando 1 caja', priceBefore: 12990, price: 12340, scaleNote: '' },
+      { id: 'ama-17', brand: 'AMA Lubricants', line: 'Fluidos 500 cm³', name: 'AMPAC 20W-30 Embragues Centrífugos', spec: 'Caja 20 x 500 cm³', condition: '5% OFF comprando 1 caja', priceBefore: 5490, price: 5215, scaleNote: '' },
+      { id: 'ama-18', brand: 'AMA Lubricants', line: 'Línea Jardín', name: '2T Jardín 1 L (Semisintético)', spec: 'Motosierras / desmalezadoras • Caja 12x1L', condition: '10% OFF', priceBefore: 12990, price: 11690, scaleNote: '' },
+      { id: 'ama-19', brand: 'AMA Lubricants', line: 'Línea Jardín', name: 'HD SAE 30 1 L (Mineral)', spec: 'Grupos electrógenos / césped • Caja 12x1L', condition: '10% OFF', priceBefore: 11990, price: 10790, scaleNote: '' },
+      { id: 'ama-20', brand: 'AMA Lubricants', line: 'Línea Jardín', name: 'HD 10W-30 1 L / Chain Lube Motosierra 1 L', spec: 'Semisintético • Caja 12x1L', condition: '10% OFF', priceBefore: 12490, price: 11240, scaleNote: '' },
+
+      // WOLVER
+      { id: 'wol-1', brand: 'WOLVER', line: 'Semisintéticos', name: 'Four Stroke Power 4T 10W-30', spec: 'API SL / JASO MA2 • Envase 1 L', condition: '15% OFF x24 unid + LED M4', priceBefore: 18990, price: 16140, scaleNote: 'Llevando 3 cajas = 1 Lámpara Philips LED M4 regalo' },
+      { id: 'wol-2', brand: 'WOLVER', line: 'Semisintéticos', name: 'Four Stroke Power 4T 10W-40', spec: 'API SL / JASO MA2 • Envase 1 L', condition: '15% OFF x24 unid + LED M4', priceBefore: 19990, price: 16990, scaleNote: 'Llevando 3 cajas = 1 Lámpara Philips LED M4 regalo' },
+      { id: 'wol-3', brand: 'WOLVER', line: 'Semisintéticos', name: 'Four Stroke Power 4T 20W-50', spec: 'API SL / JASO MA2 • Envase 1 L', condition: '15% OFF x24 unid + LED M4', priceBefore: 16990, price: 14440, scaleNote: 'Llevando 3 cajas = 1 Lámpara Philips LED M4 regalo' },
+      { id: 'wol-4', brand: 'WOLVER', line: 'Semisintéticos 2T', name: 'Two Stroke Speed 2T', spec: 'API TC / JASO FC / ISO L-EGD • 1 L', condition: '15% OFF x24 unid + LED M4', priceBefore: 19990, price: 16990, scaleNote: 'Llevando 3 cajas = 1 Lámpara Philips LED M4 regalo' },
+      { id: 'wol-5', brand: 'WOLVER', line: '100% Sintéticos', name: 'Special Racing 4T SAE 10W-40 / 10W-50 / 10W-60', spec: '100% Sintético • API SN / JASO MA2 • 1 L', condition: '15% OFF x24 unid + LED M4', priceBefore: 21490, price: 18265, scaleNote: 'Llevando 3 cajas = 1 Lámpara Philips LED M4 regalo' },
+      { id: 'wol-6', brand: 'WOLVER', line: '100% Sintéticos', name: 'Special Racing 4T SAE 15W-50', spec: '100% Sintético • API SN / JASO MA2 • 1 L', condition: '15% OFF x24 unid + LED M4', priceBefore: 19490, price: 16565, scaleNote: 'Llevando 3 cajas = 1 Lámpara Philips LED M4 regalo' },
+
+      // FERCOL
+      { id: 'fer-1', brand: 'FERCOL', line: 'Aceite 4T Doypack', name: 'Fercol 4T SAE 20W-50 Mineral (900 cc)', spec: 'Doypack Caja 16 x 900 cc • API SG / JASO MA', condition: 'Escala x3 / x5 / x10 cajas', priceBefore: null, price: 6375, scaleNote: 'x3: $6.375 | x5: $6.190 | x10: $5.990 (Combos $5.690 / $5.390)' },
+      { id: 'fer-2', brand: 'FERCOL', line: 'Aerosoles', name: 'Lubricante para Cadenas 250 cc', spec: 'Caja 12 x 250 cc • Alta adherencia', condition: 'Nuevo Ingreso • Suma p/ Combo', priceBefore: null, price: 5690, scaleNote: '' },
+      { id: 'fer-3', brand: 'FERCOL', line: 'Aerosoles', name: 'Lubricante para Cadenas 440 cc', spec: 'Caja 12 x 440 cc • Alta adherencia', condition: 'Nuevo Ingreso • Suma p/ Combo', priceBefore: null, price: 6850, scaleNote: '' },
+      { id: 'fer-4', brand: 'FERCOL', line: 'Aerosoles', name: 'Infla y Sella Neumáticos 400 ml', spec: 'Caja 12 x 400 cc • Con o sin cámara', condition: 'Nuevo Ingreso • Suma p/ Combo', priceBefore: null, price: 8190, scaleNote: '' },
+      { id: 'fer-5', brand: 'FERCOL', line: 'Aerosoles', name: 'Lubricante Multiuso 440 cc', spec: 'Caja 12 x 440 cc • Penetrante', condition: 'Nuevo Ingreso • Suma p/ Combo', priceBefore: null, price: 6450, scaleNote: '' },
+
+      // ECO-LUBE
+      { id: 'eco-1', brand: 'ECO-LUBE', line: 'Aerosoles', name: 'Chain Lube — Lubricante Cadenas 450 ml', spec: 'Caja 24 x 450 ml', condition: 'Nuevo Ingreso', priceBefore: null, price: 6250, scaleNote: '' },
+      { id: 'eco-2', brand: 'ECO-LUBE', line: 'Aerosoles', name: 'Tire Sealer & Inflator — Infla y Sella 450 ml', spec: 'Caja 24 x 450 ml', condition: 'Nuevo Ingreso', priceBefore: null, price: 7490, scaleNote: '' },
+      { id: 'eco-3', brand: 'ECO-LUBE', line: 'Aerosoles', name: 'Lubricante Multiuso 450 ml', spec: 'Caja 24 x 450 ml', condition: 'Nuevo Ingreso', priceBefore: null, price: 5750, scaleNote: '' },
+      { id: 'eco-4', brand: 'ECO-LUBE', line: 'Aerosoles', name: 'Full Contact Cleaner — Limpia Contactos 450 ml', spec: 'Caja 24 x 450 ml', condition: 'Nuevo Ingreso', priceBefore: null, price: 6990, scaleNote: '' },
+      { id: 'eco-5', brand: 'ECO-LUBE', line: 'Aerosoles', name: 'Interior Revive Spray — Silicón 500 ml', spec: 'Caja 24 x 500 ml', condition: 'Nuevo Ingreso', priceBefore: null, price: 5990, scaleNote: '' },
+      { id: 'eco-6', brand: 'ECO-LUBE', line: 'Aerosoles', name: 'Carb Cleaner — Limpia Carburador 450 ml', spec: 'Caja 24 x 450 ml', condition: 'Nuevo Ingreso', priceBefore: null, price: 4990, scaleNote: '' }
+    ];
+
+    let activeBrand = 'Todas';
+    let cart = [];
+
+    function formatARS(num) {
+      return '$' + num.toLocaleString('es-AR');
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-msg').textContent = message;
+      toast.classList.remove('hidden');
+      requestAnimationFrame(() => toast.classList.remove('translate-y-4', 'opacity-0'));
+      setTimeout(() => {
+        toast.classList.add('translate-y-4', 'opacity-0');
+        setTimeout(() => toast.classList.add('hidden'), 300);
+      }, 2500);
+    }
+
+    function copyText(text, msg) {
+      const temp = document.createElement('textarea');
+      temp.value = text;
+      document.body.appendChild(temp);
+      temp.select();
+      document.execCommand('copy');
+      document.body.removeChild(temp);
+      showToast(msg || 'Copiado al portapapeles');
+    }
+
+    // Navegación entre Landing y /brandkit
+    function switchView(view) {
+      const landing = document.getElementById('view-landing');
+      const brandkit = document.getElementById('view-brandkit');
+      const btn = document.getElementById('nav-brandkit-btn');
+
+      if (view === 'brandkit') {
+        landing.classList.add('hidden');
+        brandkit.classList.remove('hidden');
+        btn.classList.add('bg-luna-gold', 'text-luna-navy');
+        btn.classList.remove('bg-luna-cobalt', 'text-luna-gold');
+        window.history.replaceState(null, '', '#brandkit');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        brandkit.classList.add('hidden');
+        landing.classList.remove('hidden');
+        btn.classList.remove('bg-luna-gold', 'text-luna-navy');
+        btn.classList.add('bg-luna-cobalt', 'text-luna-gold');
+        window.history.replaceState(null, '', '#');
+      }
+    }
+
+    function toggleMobileMenu() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    }
+
+    function setBrandFilter(brand) {
+      activeBrand = brand;
+      document.querySelectorAll('.brand-tab').forEach(btn => {
+        if (btn.dataset.brand === brand) {
+          btn.className = 'brand-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold uppercase tracking-wide bg-luna-navy text-luna-gold transition';
+        } else {
+          btn.className = 'brand-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold uppercase tracking-wide bg-luna-ice text-luna-navy hover:bg-slate-200 transition';
+        }
+      });
+      renderCatalog();
+    }
+
+    function quickFilterBrand(brand) {
+      switchView('landing');
+      setBrandFilter(brand);
+      document.getElementById('catalogo').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function renderCatalog() {
+      const query = document.getElementById('search-input').value.toLowerCase().trim();
+      const grid = document.getElementById('catalog-grid');
+      const countEl = document.getElementById('results-count');
+
+      const filtered = PRODUCTS.filter(p => {
+        const matchBrand = activeBrand === 'Todas' || p.brand === activeBrand;
+        const matchText = !query ||
+          p.name.toLowerCase().includes(query) ||
+          p.brand.toLowerCase().includes(query) ||
+          p.line.toLowerCase().includes(query) ||
+          p.spec.toLowerCase().includes(query);
+        return matchBrand && matchText;
+      });
+
+      countEl.textContent = `Mostrando ${filtered.length} producto${filtered.length === 1 ? '' : 's'}`;
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full text-center py-12 bg-luna-ice rounded-2xl border border-slate-200">
+            <i class="ph-bold ph-magnifying-glass text-3xl text-slate-400 mb-2"></i>
+            <p class="font-bold text-luna-navy">No encontramos productos con esa búsqueda</p>
+            <button onclick="document.getElementById('search-input').value=''; setBrandFilter('Todas');" class="mt-3 px-4 py-2 rounded-xl bg-luna-navy text-white text-xs font-bold">Mostrar todos</button>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(p => `
+        <article class="bg-luna-ice/80 hover:bg-white rounded-2xl p-5 border-2 border-slate-200 hover:border-luna-crimson shadow-xs hover:shadow-md transition flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-2.5">
+              <span class="px-2.5 py-0.5 rounded-md bg-luna-navy text-luna-gold font-display italic font-extrabold text-xs uppercase tracking-wider">${p.brand}</span>
+              <span class="text-[11px] font-bold text-slate-500">${p.line}</span>
+            </div>
+            <h3 class="font-bold text-base text-luna-navy leading-snug">${p.name}</h3>
+            <p class="text-xs text-slate-600 mt-1">${p.spec}</p>
+
+            <div class="mt-3 inline-block px-2.5 py-1 rounded-md bg-red-50 border border-luna-crimson/20 text-luna-crimson text-[11px] font-extrabold">
+              ${p.condition}
+            </div>
+
+            ${p.scaleNote ? `<p class="mt-2 text-xs font-semibold text-luna-navy bg-amber-100/80 border border-luna-gold/70 rounded-lg px-2.5 py-1.5">${p.scaleNote}</p>` : ''}
+          </div>
+
+          <div class="mt-5 pt-3.5 border-t border-slate-200 flex items-end justify-between gap-3">
+            <div>
+              ${p.priceBefore ? `<span class="text-xs text-slate-400 line-through block">Antes ${formatARS(p.priceBefore)}</span>` : '<span class="text-[11px] text-slate-500 block">Precio unitario</span>'}
+              <span class="font-display font-black text-2xl text-luna-navy">${formatARS(p.price)}</span>
+            </div>
+            <button onclick="addToCart('${p.id}')" class="px-3.5 py-2.5 rounded-xl bg-luna-crimson hover:bg-luna-crimsonDark text-white font-bold text-xs flex items-center gap-1.5 shadow-xs transition">
+              <i class="ph-bold ph-plus"></i> Agregar
+            </button>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    // Carrito / Armador de Pedido WhatsApp
+    function addToCart(id) {
+      const prod = PRODUCTS.find(p => p.id === id);
+      if (!prod) return;
+      const existing = cart.find(i => i.id === id);
+      if (existing) existing.qty += 1;
+      else cart.push({ ...prod, qty: 1 });
+      updateCartUI();
+      showToast(`Agregado: ${prod.name}`);
+    }
+
+    function changeQty(id, delta) {
+      const idx = cart.findIndex(i => i.id === id);
+      if (idx === -1) return;
+      cart[idx].qty += delta;
+      if (cart[idx].qty <= 0) cart.splice(idx, 1);
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const badge = document.getElementById('cart-badge');
+      const container = document.getElementById('cart-items');
+      const totalEl = document.getElementById('cart-total');
+
+      const totalQty = cart.reduce((acc, i) => acc + i.qty, 0);
+      const totalAmount = cart.reduce((acc, i) => acc + (i.price * i.qty), 0);
+
+      if (totalQty > 0) {
+        badge.textContent = totalQty;
+        badge.classList.remove('hidden');
+      } else {
+        badge.classList.add('hidden');
+      }
+
+      totalEl.textContent = formatARS(totalAmount);
+
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <div class="text-center py-12 text-slate-400">
+            <i class="ph-bold ph-shopping-cart text-4xl mb-2"></i>
+            <p class="text-sm font-bold text-luna-navy">Tu pedido está vacío</p>
+            <p class="text-xs mt-1">Agregá productos desde el catálogo para armar tu consulta mayorista.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = cart.map(item => `
+        <div class="p-3.5 rounded-xl bg-luna-ice border border-slate-200 flex items-center justify-between gap-3">
+          <div class="min-w-0">
+            <span class="text-[10px] font-extrabold uppercase text-luna-crimson">${item.brand}</span>
+            <p class="font-bold text-xs sm:text-sm text-luna-navy truncate">${item.name}</p>
+            <span class="text-xs text-slate-600">${formatARS(item.price)} c/u</span>
+          </div>
+          <div class="flex items-center gap-2 shrink-0">
+            <button onclick="changeQty('${item.id}', -1)" class="w-7 h-7 rounded-lg bg-white border border-slate-300 font-bold text-luna-navy hover:bg-slate-100">-</button>
+            <span class="text-xs font-extrabold w-5 text-center">${item.qty}</span>
+            <button onclick="changeQty('${item.id}', 1)" class="w-7 h-7 rounded-lg bg-luna-navy text-white font-bold hover:bg-luna-cobalt">+</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function toggleCartDrawer() {
+      document.getElementById('cart-drawer').classList.toggle('hidden');
+    }
+
+    function sendOrderWhatsApp() {
+      if (cart.length === 0) {
+        window.open('https://wa.me/5493515141141?text=Hola%20Matias!%20Quiero%20hacer%20un%20pedido%20mayorista%20de%20lubricantes%20en%20C%C3%B3rdoba%20Capital.', '_blank');
+        return;
+      }
+      const lines = cart.map(i => `• ${i.qty}x [${i.brand}] ${i.name} (${formatARS(i.price)} c/u)`);
+      const total = cart.reduce((acc, i) => acc + (i.price * i.qty), 0);
+      const msg = `Hola Matias! Te paso este pedido mayorista desde la web de Distribuidora LUNA (Córdoba Capital):\n\n${lines.join('\n')}\n\nTotal estimado: ${formatARS(total)}\n(Entiendo que la entrega se realiza dentro de las 48 hs previo depósito o pago en efectivo).`;
+      window.open(`https://wa.me/5493515141141?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    // Descarga de Logo en SVG o PNG Transparente (alta resolución)
+    function downloadLogo(variant, format) {
+      const container = document.getElementById(variant === 'dark' ? 'bk-logo-dark' : 'bk-logo-light');
+      const svgEl = container.querySelector('svg');
+      const serializer = new XMLSerializer();
+      let svgString = serializer.serializeToString(svgEl);
+
+      if (!svgString.includes('xmlns="http://www.w3.org/2000/svg"')) {
+        svgString = svgString.replace('<svg', '<svg xmlns="http://www.w3.org/2000/svg"');
+      }
+
+      if (format === 'svg') {
+        const blob = new Blob([svgString], { type: 'image/svg+xml;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `distribuidora-luna-logo-${variant}.svg`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        showToast(`Logo SVG (${variant}) descargado`);
+        return;
+      }
+
+      // Conversión a PNG Transparente 3x (1290x375 px)
+      const canvas = document.createElement('canvas');
+      canvas.width = 1290;
+      canvas.height = 375;
+      const ctx = canvas.getContext('2d');
+      const img = new Image();
+      const svgBlob = new Blob([svgString], { type: 'image/svg+xml;charset=utf-8' });
+      const url = URL.createObjectURL(svgBlob);
+
+      img.onload = function () {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        URL.revokeObjectURL(url);
+        canvas.toBlob(function (pngBlob) {
+          const pngUrl = URL.createObjectURL(pngBlob);
+          const a = document.createElement('a');
+          a.href = pngUrl;
+          a.download = `distribuidora-luna-logo-${variant}.png`;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(pngUrl);
+          showToast(`Logo PNG transparente (${variant}) descargado`);
+        }, 'image/png');
+      };
+      img.src = url;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCatalog();
+      updateCartUI();
+      if (window.location.hash === '#brandkit') {
+        switchView('brandkit');
+      }
+    });
+  </script>
+</body>
+</html>
